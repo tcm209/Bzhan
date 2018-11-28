@@ -21,7 +21,13 @@ class Bzhan(scrapy.Spider):
 
     baseURL="https://www.bilibili.com/"
 
+    apiURL="https://api.bilibili.com/x/v2/reply"#接口读取数据
+    repliesPageSize=10 #回复评论  一页10条
+
     searchURL=baseURL+"all?keyword=米仓凉子"
+
+    nextArr=[]
+
 
 
 
@@ -102,7 +108,7 @@ class Bzhan(scrapy.Spider):
             Request(self.X4URL, callback=self.parseBzhanSYJSON, headers=self.headerJSON),#读取搜索结果电视剧
             # Request(self.playURL, callback=self.parseHead, headers=self.headerPlay),#读取播放页面  收藏数
             # Request(self.plURL, callback=self.parsePlayTablk, headers=self.headersPLL)
-
+            # Request("https://api.bilibili.com/x/v2/reply/reply?pn=0&type=1&oid=19459363&ps=10&root=631826077", callback=self.parseNextReplies, headers=self.headersPLL)
             ]
 
     # 读取电视剧简介
@@ -157,13 +163,13 @@ class Bzhan(scrapy.Spider):
             pn = str(obj['page'])#第几页
             refererURL = self.baseURL+obj['from']+"/play/ep"+ep+"?from=search"
             refererArr.append(refererURL)
-            targetURL= "https://api.bilibili.com/x/v2/reply?pn="+str(pn)+"&type=1&oid="+str(oid)+"&sort=0"
+            targetURL= self.apiURL+"?pn="+str(pn)+"&type=1&oid="+str(oid)+"&sort=0"
             targetArr.append(targetURL)
         print(refererArr)
 
         testArr=[1]
         for pn in testArr:
-            pnURL = "https://api.bilibili.com/x/v2/reply?pn="+str(pn)+"&type=1&oid=19459363&sort=0"
+            pnURL = self.apiURL+"?pn="+str(pn)+"&type=1&oid=19459363&sort=0"
             print(pnURL)
             yield Request(pnURL, callback=self.parsePlayTablk, headers=self.headersPLL,meta={'item': item})
 
@@ -178,8 +184,9 @@ class Bzhan(scrapy.Spider):
 
     # 读取评论
     def parsePlayTablk(self,response):
+        del self.nextArr[:]  # 清空数组
         # item=response.meta['item']
-        print("第二层爬取")
+        print("==================parsePlayTablk=====================")
         html = response.text
         dataJSON=json.loads(html)
         data= dataJSON["data"]['replies']
@@ -189,37 +196,36 @@ class Bzhan(scrapy.Spider):
         #读取page页面
         self.readPage(dataPage)
         #读取热门评论
-        self.readReplies(dataHot)
-        # f = open(r'E:\te.txt', 'a+',encoding='utf-8')
-        # j=1
-        # for obj in data:
-        #     content=obj['content']
-        #     member=obj['member']
-        #
-        #     result="第"+str(j)+"ID："+member['mid']+" 昵称："+member['uname']+" 性别："+member['sex']+" 签名："+member['sign']+"\n"+" 设备："+content['device']+" 评论内容："+content['message']+"\n"
-        #     f.write(result)
-        #     j=j+1
-        #
-        #
-        # f.close()
+        if dataHot is None:
+            print("相互回复不存在热门评论 故dataHot为空")
+            self.readReplies(data)
+        else:
+            print("读取评论存在热门回复")
+            self.readReplies(dataHot)
+        #执行再次循环
+        print(self.nextArr)
+        for ur in self.nextArr:
+            yield scrapy.Request(ur,dont_filter=True, callback=self.parseNextReplies, headers=self.headersPLL)
 
     # 读取热门评论
     def readReplies(self,data):
-        print("第几次")
+
+        print("==================readReplies===========================")
         for obj in data:
             replies = obj['replies']
+            self.printTxt(obj)
             if replies is None:
-                print("replies为空")
-                self.printTxt(obj)
+                print("当前repliesw为空  不执行写入txt操作")
             else:
                 print("replies不为空")
                 j=len(replies)
                 print("回复数量："+str(j))
-                self.printTxt(obj)
                 self.readReplies(replies)
+
 
     #输出
     def printTxt(self,obj):
+        print("==================printTxt===========================")
         rpid = obj['rpid']
         count = obj['count']
         ctime = obj['ctime']
@@ -240,27 +246,71 @@ class Bzhan(scrapy.Spider):
         rank = obj['member']['rank']
         sex = obj['member']['sex']
         sign = obj['member']['sign']
-        print("姓名：" + uname + " rpid：" + str(rpid))
+        print("姓名：" + uname + " rpid：" + str(rpid)+" 回复内容："+message)
+        logtxt ="姓名：" + uname + " rpid：" + str(rpid)+" 回复内容："+message+"\n"
+        self.writeLog(logtxt)
+        print("++++++++++++++++++++++++++判断++++++++++++++++++++++++++++++++++++++")
+        self.readRepliseNext(rcount,oid,rpid)
+
 
     #读取页码信息
     def readPage(self,data):
+        print("==================readPage===========================")
         pageCount = data['count']
-        pageNum = data['data']['page']['num']
-        pageSize = data['data']['page']['size']
+        pageNum = data['num']
+        pageSize = data['size']
+        print("一页多少："+str(pageSize)+" 当前页码："+str(pageNum))
 
     #读取评论翻页
-    def readRepliseNext(self,):
+    def readRepliseNext(self,rcount,oid,rpid):
+        print("==================readRepliseNext===========================")
+        # 读取b站 互相回复
+        print("pnu: " + str(rcount) + " oid :" + str(oid))
+        arrReplies=[]
+        if rcount > 3:
+            pnu = rcount / self.repliesPageSize#正常除法
+            pnum = rcount // self.repliesPageSize#取整数部分
+            pg = 1
+            print("pnu: "+str(pnu)+" pnum :" +str(pnum))
+            if pnu > pnum:
+                if pnu < 1:
+                    pnum = 1
+                pg = pnum + 1
+            else:
+                pg = pg+1
+
+            print("计算完毕后的pg："+str(pg))
+            for i in range(1, pg):
+                tarRepliesURL = self.apiURL + "/reply?pn=1&type=1&oid="+str(oid)+"&ps=10&root="+str(rpid)+""
+                print(tarRepliesURL)
+                self.nextArr.append(tarRepliesURL)
+
+        if len(arrReplies)==0:
+            print("再次爬寻地址为空")
+        else:
+            print("执行再次爬寻")
 
 
 
+    #读取回复评论内的json
+    def parseNextReplies(self,response):
+        print("+++++++++++++++++++++++parseNextReplies+++++++++++++++++++++++++++")
+        html = response.text
+        dataJSON = json.loads(html)
+        data = dataJSON["data"]['replies']
+        self.readReplies(data)
+        # for obj in data:
+        #     uname = obj['member']['uname']
+        #     message = obj['content']['message']
+        #     logtxt = "parseNextReplies姓名：" + uname + " 回复内容：" + message + "\n"
+        #     self.writeLog(logtxt)
+        #     print("姓名：" + uname + "  回复内容：" + message)
 
 
-
-
-
-
-
-
+    def writeLog(self,logtxt):
+        f = open(r'E:\te.txt', 'a+',encoding='utf-8')
+        f.write(logtxt)
+        f.close()
 
 
     # 执行新增动作
