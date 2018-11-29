@@ -101,6 +101,8 @@ class Bzhan(scrapy.Spider):
     cursor = db.cursor()
 
 
+
+
     def start_requests(self):
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')  # 改变标准输出的默认编码
         return [
@@ -170,7 +172,7 @@ class Bzhan(scrapy.Spider):
         testArr=[1]
         for pn in testArr:
             pnURL = self.apiURL+"?pn="+str(pn)+"&type=1&oid=19459363&sort=0"
-            print(pnURL)
+
             yield Request(pnURL, callback=self.parsePlayTablk, headers=self.headersPLL,meta={'item': item})
 
         # pl = BzhanX4()
@@ -186,7 +188,7 @@ class Bzhan(scrapy.Spider):
     def parsePlayTablk(self,response):
         del self.nextArr[:]  # 清空数组
         # item=response.meta['item']
-        print("==================parsePlayTablk=====================")
+
         html = response.text
         dataJSON=json.loads(html)
         data= dataJSON["data"]['replies']
@@ -197,10 +199,8 @@ class Bzhan(scrapy.Spider):
         self.readPage(dataPage)
         #读取热门评论
         if dataHot is None:
-            print("相互回复不存在热门评论 故dataHot为空")
             self.readReplies(data)
         else:
-            print("读取评论存在热门回复")
             self.readReplies(dataHot)
         #执行再次循环
         print(self.nextArr)
@@ -209,8 +209,6 @@ class Bzhan(scrapy.Spider):
 
     # 读取热门评论
     def readReplies(self,data):
-
-        print("==================readReplies===========================")
         for obj in data:
             replies = obj['replies']
             self.printTxt(obj)
@@ -225,7 +223,6 @@ class Bzhan(scrapy.Spider):
 
     #输出
     def printTxt(self,obj):
-        print("==================printTxt===========================")
         rpid = obj['rpid']
         count = obj['count']
         ctime = obj['ctime']
@@ -241,7 +238,7 @@ class Bzhan(scrapy.Spider):
         displayRank = obj['member']['DisplayRank']
         avatar = obj['member']['avatar']
         current_level = obj['member']['level_info']['current_level']
-        mid = obj['member']['mid']
+
         uname = obj['member']['uname']
         rank = obj['member']['rank']
         sex = obj['member']['sex']
@@ -249,13 +246,21 @@ class Bzhan(scrapy.Spider):
         print("姓名：" + uname + " rpid：" + str(rpid)+" 回复内容："+message)
         logtxt ="姓名：" + uname + " rpid：" + str(rpid)+" 回复内容："+message+"\n"
         self.writeLog(logtxt)
-        print("++++++++++++++++++++++++++判断++++++++++++++++++++++++++++++++++++++")
+        isExitrpid=self.queryByRpid(rpid)
+        if isExitrpid ==0:
+            sql = "INSERT INTO replies(rpid,count,ctime,floor,likepoint,mid,oid,rcount,device,message,displayRank,avatar,current_level,uname,rank,sex,sign)VALUES " \
+                  "('" + str(rpid) + "','" + str(count) + "','" + str(ctime) + "','" + str(floor) + "','" + str(
+                like) + "','" + str(mid) + "','" + str(oid) + "','" + str(
+                rcount) + "','" + device + "','" + message + "'," \
+                                                             "'" + str(displayRank) + "','" + avatar + "','" + str(
+                current_level) + "','" + uname + "','" + rank + "','" + sex + "','" + sign + "')"
+            self.addRepliesToServer(sql)
+
         self.readRepliseNext(rcount,oid,rpid)
 
 
     #读取页码信息
     def readPage(self,data):
-        print("==================readPage===========================")
         pageCount = data['count']
         pageNum = data['num']
         pageSize = data['size']
@@ -263,9 +268,7 @@ class Bzhan(scrapy.Spider):
 
     #读取评论翻页
     def readRepliseNext(self,rcount,oid,rpid):
-        print("==================readRepliseNext===========================")
         # 读取b站 互相回复
-        print("pnu: " + str(rcount) + " oid :" + str(oid))
         arrReplies=[]
         if rcount > 3:
             pnu = rcount / self.repliesPageSize#正常除法
@@ -294,7 +297,6 @@ class Bzhan(scrapy.Spider):
 
     #读取回复评论内的json
     def parseNextReplies(self,response):
-        print("+++++++++++++++++++++++parseNextReplies+++++++++++++++++++++++++++")
         html = response.text
         dataJSON = json.loads(html)
         data = dataJSON["data"]['replies']
@@ -312,6 +314,33 @@ class Bzhan(scrapy.Spider):
         f.write(logtxt)
         f.close()
 
+    #把评论写入数据库
+    def addRepliesToServer(self,sql):
+        self.connectionMysql()
+        try:
+            self.cursor.execute(sql)
+            self.db.commit()
+        except:
+            self.db.rollback()
+            print("写入失败")
+        self.db.close()
+
+    #查询是否存在相同的回复
+    def queryByRpid(self,rpid):
+        id=0
+        self.connectionMysql()
+        sql ="select id from replies where rpid='"+str(rpid)+"'"
+        try:
+            self.cursor.execute(sql)
+            result=self.cursor.fetchall()
+            for row in result:
+                id=row[0]
+
+        except:
+            print("Error: unable to fecth data")
+        self.db.close()
+        return id
+
 
     # 执行新增动作
     def addSQL(self,sql):
@@ -321,6 +350,11 @@ class Bzhan(scrapy.Spider):
         except:
             self.db.rollback()
         self.db.close()
+
+    #连接数据库
+    def connectionMysql(self):
+        self.db = pymysql.connect("localhost", "root", "123456", "bzhan")
+        self.cursor = self.db.cursor()
 
 
 
