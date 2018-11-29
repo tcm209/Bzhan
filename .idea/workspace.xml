@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="021dd857-7908-487d-a5c2-b1baefdd6e7d" name="Default" comment="" />
+    <list default="true" id="021dd857-7908-487d-a5c2-b1baefdd6e7d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Bzhan/items.py" afterPath="$PROJECT_DIR$/Bzhan/items.py" />
+      <change beforePath="$PROJECT_DIR$/Bzhan/spiders/Bzhan.py" afterPath="$PROJECT_DIR$/Bzhan/spiders/Bzhan.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,24 +21,28 @@
       <file leaf-file-name="Bzhan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="251" column="31" lean-forward="true" selection-start-line="251" selection-start-column="31" selection-end-line="251" selection-end-column="31" />
+            <state relative-caret-position="2109">
+              <caret line="298" column="40" lean-forward="false" selection-start-line="298" selection-start-column="40" selection-end-line="298" selection-end-column="40" />
               <folding>
-                <element signature="e#23#36#0" expanded="true" />
-                <marker date="1543215203375" expanded="true" signature="6992:7115" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7128" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7140" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7155" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7170" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7190" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7201" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7218" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7235" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7256" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7268" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7280" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7292" ph="insert into AVTABLE... " />
-                <marker date="1543215203375" expanded="true" signature="6992:7311" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+                <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+                <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+                <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+                <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+                <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
               </folding>
             </state>
           </provider>
@@ -43,8 +51,8 @@
       <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="396">
+              <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -64,14 +72,18 @@
       <find>DOWNLOAD_DELAY</find>
       <find>see</find>
       <find>plURL</find>
+      <find>pn=0</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Bzhan/settings.py" />
-        <option value="$PROJECT_DIR$/Bzhan/items.py" />
         <option value="$PROJECT_DIR$/Bzhan/pipelines.py" />
+        <option value="$PROJECT_DIR$/Bzhan/items.py" />
         <option value="$PROJECT_DIR$/Bzhan/spiders/Bzhan.py" />
       </list>
     </option>
@@ -107,6 +119,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -122,8 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,6 +157,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -188,11 +201,11 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41630435" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3173913" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18070363" sideWeight="0.49348232" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2633297" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18869936" sideWeight="0.49348232" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -246,21 +259,169 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#23#36#0" expanded="true" />
-            <marker date="1543215203375" expanded="true" signature="6992:7115" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7128" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7140" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7155" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7170" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7190" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7201" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7218" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7235" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7256" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7268" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7280" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7292" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7311" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
           </folding>
         </state>
       </provider>
@@ -285,21 +446,25 @@
         <state relative-caret-position="1900">
           <caret line="106" column="16" lean-forward="true" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
           <folding>
-            <element signature="e#23#36#0" expanded="true" />
-            <marker date="1543215203375" expanded="true" signature="6992:7115" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7128" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7140" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7155" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7170" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7190" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7201" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7218" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7235" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7256" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7268" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7280" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7292" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7311" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
           </folding>
         </state>
       </provider>
@@ -344,38 +509,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bzhan/items.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="396">
+          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bzhan/spiders/Bzhan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="251" column="31" lean-forward="true" selection-start-line="251" selection-start-column="31" selection-end-line="251" selection-end-column="31" />
+        <state relative-caret-position="2109">
+          <caret line="298" column="40" lean-forward="false" selection-start-line="298" selection-start-column="40" selection-end-line="298" selection-end-column="40" />
           <folding>
-            <element signature="e#23#36#0" expanded="true" />
-            <marker date="1543215203375" expanded="true" signature="6992:7115" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7128" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7140" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7155" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7170" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7190" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7201" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7218" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7235" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7256" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7268" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7280" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7292" ph="insert into AVTABLE... " />
-            <marker date="1543215203375" expanded="true" signature="6992:7311" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7396" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7409" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7421" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7436" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7451" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7471" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7482" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7499" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7516" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7537" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7549" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7561" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7573" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="7273:7592" ph="insert into AVTABLE... " />
+            <marker date="1543482438899" expanded="true" signature="11280:13363" ph="INSERT INTO replies... " />
+            <marker date="1543482438899" expanded="true" signature="13363:13397" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13411" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13412" ph="select id fr... replies" />
+            <marker date="1543482438899" expanded="true" signature="13363:13861" ph="select id fr... replies" />
           </folding>
         </state>
       </provider>
