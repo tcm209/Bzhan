@@ -7,7 +7,7 @@ import io
 import sys
 import json
 import pymysql
-import re
+from 
 
 class Bzhan(scrapy.Spider):
 
@@ -94,6 +94,18 @@ class Bzhan(scrapy.Spider):
         'Referer': 'https://www.bilibili.com/bangumi/play/ep197649?from=search&seid=5961541648463345652',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
     }
+    #通用head
+    commonHeasers={
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'zh-CN,zh;q=0.9',
+        'Cache - Control: max - age': 0,
+        'Connection': 'keep-alive',
+        'Cookie': 'LIVE_BUVID=AUTO4815398368215790; stardustvideo=1; buvid3=743783AE-1151-4D43-B771-351B5942207F26430infoc; rpdid=kmilsmspoqdosklqkmkxw; fts=1539837710; CURRENT_FNVAL=16; sid=9ngxiviv; bp_t_offset_8836736=176961109387058512; UM_distinctid=167069eb3c82b-097390cdbf4e2b-594c2a16-1fa400-167069eb3ca73c',
+        'Host': "api.bilibili.com",
+        'Upgrade-Insecure-Requests': 1,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
+    }
 
     ThreeURL="https://www.bilibili.com/bangumi/play/ep196751?from=search&seid=5961541648463345652"
     # 连接数据库
@@ -155,37 +167,84 @@ class Bzhan(scrapy.Spider):
         self.addSQL(sql)
         #读取每集连接地址
         refererArr = []
-        targetArr=[ i for i in range(1,5)]
+        targetArr=[]
+        oidArr=[]
         item=BzhanItem();
         item['name']=title
         text = data["result"]['episodes']
         for obj in text:
+            cid=obj['cid']
+            cover=obj['cover']
+            duration=obj['duration']
+            episode_status=obj['episode_status']
+            fromid=obj['from']
+            index=obj['index']
+            index_title=obj['index_title']
+            mid=obj['mid']
+            pub_real_time=obj['pub_real_time']
+            section_id=obj['section_id']
+            section_type=obj['section_type']
+            vid=obj['vid']
             oid=str(obj['aid']) #api地址oid
             ep = str(obj['ep_id'])
             pn = str(obj['page'])#第几页
+            oidArr.append(oid)
+            #搜索地址header
             refererURL = self.baseURL+obj['from']+"/play/ep"+ep+"?from=search"
             refererArr.append(refererURL)
+            #搜索地址
             targetURL= self.apiURL+"?pn="+str(pn)+"&type=1&oid="+str(oid)+"&sort=0"
             targetArr.append(targetURL)
-        print(refererArr)
+            #新增到数据库
+            sqlStr = "INSERT INTO epview(aid,cid,cover,duration,ep_id,episode_status,fromep,indexep,index_title,mid,page,pub_real_time,section_id,section_type,vid,refererURL,targetURL)VALUES" \
+                     " (" + str(oid) + "," + str(cid) + ",'" + cover + "'," + str(duration) + "," + str(ep) + "," \
+                     "" + str(episode_status) + ",'" + fromid + "','" + index + "','" + index_title + "'," + str(mid) + ","+str(pn)+"," \
+                     "'" + pub_real_time + "'," + str(section_id) + "," + str(section_type) + ",'" + vid + "','"+refererURL+"','"+targetURL+"')"
+            self.addEpDta(sqlStr)
+        #循环目标地址
 
-        testArr=[1]
-        for pn in testArr:
-            pnURL = self.apiURL+"?pn="+str(pn)+"&type=1&oid=19459363&sort=0"
+        j=0
+        for itemURL in targetArr:
+            refURL=refererArr[j]
+            oid=oidArr[j]
+            print("refURL："+refURL+"itemURL："+itemURL)
+            targetHeader={
+                        'Accept': '*/*',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Accept-Language': 'zh-CN,zh;q=0.9',
+                        'Cache - Control: max - age': 0,
+                        'Connection': 'keep-alive',
+                        'Cookie': 'LIVE_BUVID=AUTO4815398368215790; stardustvideo=1; buvid3=743783AE-1151-4D43-B771-351B5942207F26430infoc; rpdid=kmilsmspoqdosklqkmkxw; fts=1539837710; CURRENT_FNVAL=16; sid=9ngxiviv; bp_t_offset_8836736=176961109387058512; UM_distinctid=167069eb3c82b-097390cdbf4e2b-594c2a16-1fa400-167069eb3ca73c',
+                        'Host': "api.bilibili.com",
+                        'Referer': refURL,
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
+            }
+            yield Request(itemURL,callback=self.parseFirstAPI,headers=targetHeader,meta={
+                "item":itemURL,
+                "oid":oid
+            })
+            j+=1
 
-            yield Request(pnURL, callback=self.parsePlayTablk, headers=self.headersPLL,meta={'item': item})
-
-        # pl = BzhanX4()
-        # pl['name']='s'
-        # yield pl
     #读取播放页面  收藏数  播放数
-    def parseHead(self,response):
-        print("读取")
+    def parseFirstAPI(self,response):
+        refURL=response.meta['item']
+        oid=response.meta['oid']
+        html = response.text
+        dataJSON = json.loads(html)
+
+        dataPage = dataJSON['data']['page']
+        pageCount=self.readPage(dataPage)
+        newURL=''
+        for pn in range(1,pageCount+1):
+            pnURL = "https://api.bilibili.com/x/v2/reply?pn=" + str(pn) + "&type=1&oid=" + str(oid) + "&sort=0";
+            yield Request(pnURL, callback=self.parseSecondAPI, headers=self.commonHeasers)
+            print("测试页码地址："+pnURL)
+        print("读取page"+refURL+"总页数："+str(pageCount)+"新的url"+newURL)
 
 
 
     # 读取评论
-    def parsePlayTablk(self,response):
+    def parseSecondAPI(self,response):
         del self.nextArr[:]  # 清空数组
         # item=response.meta['item']
 
@@ -195,15 +254,14 @@ class Bzhan(scrapy.Spider):
         dataHot = dataJSON['data']['hots']
         dataPage=dataJSON['data']['page']
 
-        #读取page页面
-        self.readPage(dataPage)
+        self.readReplies(data)
         #读取热门评论
-        if dataHot is None:
-            self.readReplies(data)
-        else:
-            self.readReplies(dataHot)
+        # if dataHot is None:
+        #     self.readReplies(data)
+        # else:
+        #     self.readReplies(dataHot)
         #执行再次循环
-        print(self.nextArr)
+        # print(self.nextArr)
         for ur in self.nextArr:
             yield scrapy.Request(ur,dont_filter=True, callback=self.parseNextReplies, headers=self.headersPLL)
 
@@ -230,6 +288,7 @@ class Bzhan(scrapy.Spider):
         like = obj['like']
         mid = obj['mid']
         oid = obj['oid']
+        parent=obj['parent']
         rcount = obj['rcount']  # 回复数
         # content
         device = obj['content']['device']
@@ -248,12 +307,12 @@ class Bzhan(scrapy.Spider):
         self.writeLog(logtxt)
         isExitrpid=self.queryByRpid(rpid)
         if isExitrpid ==0:
-            sql = "INSERT INTO replies(rpid,count,ctime,floor,likepoint,mid,oid,rcount,device,message,displayRank,avatar,current_level,uname,rank,sex,sign)VALUES " \
+            sql = "INSERT INTO replies(rpid,count,ctime,floor,likepoint,mid,oid,rcount,device,message,displayRank,avatar,current_level,uname,rank,sex,sign,parent)VALUES " \
                   "('" + str(rpid) + "','" + str(count) + "','" + str(ctime) + "','" + str(floor) + "','" + str(
                 like) + "','" + str(mid) + "','" + str(oid) + "','" + str(
                 rcount) + "','" + device + "','" + message + "'," \
                                                              "'" + str(displayRank) + "','" + avatar + "','" + str(
-                current_level) + "','" + uname + "','" + rank + "','" + sex + "','" + sign + "')"
+                current_level) + "','" + uname + "','" + rank + "','" + sex + "','" + sign + "','"+str(parent)+"')"
             self.addRepliesToServer(sql)
 
         self.readRepliseNext(rcount,oid,rpid)
@@ -261,10 +320,22 @@ class Bzhan(scrapy.Spider):
 
     #读取页码信息
     def readPage(self,data):
-        pageCount = data['count']
+        pageCount = data['count']#全部评论数
         pageNum = data['num']
         pageSize = data['size']
-        print("一页多少："+str(pageSize)+" 当前页码："+str(pageNum))
+        acount=data['acount']#全部评论数+回复数 +删除
+        p1=pageCount/pageSize
+        p2=pageCount//pageSize
+        pageAcount=0
+        if p1>p2:
+            pageAcount=p2+1
+        else:
+            pageAcount=p2
+
+
+
+        print("总页数"+str(acount)+"count："+str(pageCount)+"一页多少："+str(pageSize)+" 当前页码："+str(pageNum)+"总页码"+str(pageAcount))
+        return pageAcount
 
     #读取评论翻页
     def readRepliseNext(self,rcount,oid,rpid):
@@ -313,6 +384,18 @@ class Bzhan(scrapy.Spider):
         f = open(r'E:\te.txt', 'a+',encoding='utf-8')
         f.write(logtxt)
         f.close()
+
+    #把页码写入数据库
+    def addEpDta(self,sql):
+        print(sql)
+        self.connectionMysql()
+        try:
+            self.cursor.execute(sql)
+            self.db.commit()
+        except:
+            self.db.rollback()
+            print("写入失败addEpDta")
+        self.db.close()
 
     #把评论写入数据库
     def addRepliesToServer(self,sql):

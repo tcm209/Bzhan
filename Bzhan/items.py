@@ -34,17 +34,16 @@ class repliesItem(scrapy.Item):
     sign = scrapy.Field
     pass
 class BzhanX4(scrapy.Item):
+    cid = scrapy.Field()
 
-    name = scrapy.Field()
+    oid =scrapy.Field()
 
-    number =scrapy.Field()
+    ep=scrapy.Field()
 
-    avid=scrapy.Field()
+    refererURL =scrapy.Field()
 
-    username =scrapy.Field()
+    targetURL = scrapy.Field()
 
-    userid = scrapy.Field()
-
-    context =scrapy.Field()
+    mid =scrapy.Field()
 
     pass
