@@ -7,7 +7,7 @@ import io
 import sys
 import json
 import pymysql
-from 
+
 
 class Bzhan(scrapy.Spider):
 
