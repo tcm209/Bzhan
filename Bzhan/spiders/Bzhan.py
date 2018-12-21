@@ -115,14 +115,21 @@ class Bzhan(scrapy.Spider):
 
 
 
+
+
     def start_requests(self):
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')  # 改变标准输出的默认编码
         return [
-            # Request(self.searchURL, callback=self.parseBzhanSY, headers=self.headers),
-            Request(self.X4URL, callback=self.parseBzhanSYJSON, headers=self.headerJSON),#读取搜索结果电视剧
-            # Request(self.playURL, callback=self.parseHead, headers=self.headerPlay),#读取播放页面  收藏数
-            # Request(self.plURL, callback=self.parsePlayTablk, headers=self.headersPLL)
-            # Request("https://api.bilibili.com/x/v2/reply/reply?pn=0&type=1&oid=19459363&ps=10&root=631826077", callback=self.parseNextReplies, headers=self.headersPLL)
+            # Request(self.searchURL, callback=self.parseBzhanSY, headers=self.headers),#不用
+            #Request(self.X4URL, callback=self.parseBzhanSYJSON, headers=self.headerJSON),#读取搜索结果电视剧 返回json格式  读取电视剧评论  正在使用
+            Request(self.X4URL,callback=self.parseBzhanSY,headers=self.headerJSON)#测试读取po主上传的视频  并读取
+
+
+
+
+            # Request(self.playURL, callback=self.parseHead, headers=self.headerPlay),#读取播放页面  收藏数 不用
+            # Request(self.plURL, callback=self.parsePlayTablk, headers=self.headersPLL)#不用
+            # Request("https://api.bilibili.com/x/v2/reply/reply?pn=0&type=1&oid=19459363&ps=10&root=631826077", callback=self.parseNextReplies, headers=self.headersPLL) 不用
             ]
 
     # 读取电视剧简介
@@ -135,6 +142,10 @@ class Bzhan(scrapy.Spider):
         avFrom=response.xpath("//div[@class='right-info']//div[@class='info-items']//div//text()").extract()[3]#地区
         avStartPlay=response.xpath("//div[@class='right-info']//div[@class='info-items']//div//text()").extract()[5]#开播时间
         avIntroduce=response.xpath("//div[@class='right-info']//div[@class='des info']//text()").extract()[0]#简介
+
+        liItems=response.xpath("//ul[@class='video-contain clearfix']//li[@class='video matrix']").extract()
+        for liItem in liItems:
+            print(liItem)
 
 
         print(avName)
@@ -381,7 +392,7 @@ class Bzhan(scrapy.Spider):
 
 
     def writeLog(self,logtxt):
-        f = open(r'E:\te.txt', 'a+',encoding='utf-8')
+        f = open(r'E:\Pythonwork\Bzhan\log.txt', 'a+',encoding='utf-8')
         f.write(logtxt)
         f.close()
 

@@ -64,7 +64,7 @@ plt.axis("off")
 # 展示图片
 plt.show()
 # 保存图片
-wordcloud.to_file('DX4.png')
+wordcloud.to_file('E:/Pythonwork/source/out/DX4out.png')
 #
 image_colors =ImageColorGenerator(back_coloring)
 plt.imshow(wordcloud.recolor(color_func=image_colors))
@@ -75,4 +75,4 @@ plt.imshow(back_coloring, cmap=plt.cm.gray)
 plt.axis("off")
 plt.show()
 # 保存图片
-wordcloud.to_file("dx.png")
+wordcloud.to_file("E:/Pythonwork/source/out/dxout.png")
